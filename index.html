@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/main.css">
+    <title>Pokemonlar</title>
+</head>
+
+<body>
+    <img class="images" src="./images/pokemon_logo.png" alt="pokemon">
+    <div>
+        <form class="form">
+            <input class="pokemon_input" type="search" placeholder="Search">
+            <select class="pokemon_sort" name="pokemon-select">
+                <option value="a_z">Aa_Zz</option>
+                <option value="z_a">Zz_Aa</option>
+                <option value="old_new">Old_New</option>
+                <option value="new_old">New_Old</option>
+            </select>
+            <button class="button" type="submit">Button</button>
+        </form>
+        <ul class="pokemon_list"></ul>
+        <template class="pokemon_template">
+            <li class="pokemon_item">
+                <p class="id">1</p>
+                <p class="number">001</p>
+                <h2 class="pokemon_heading">pokemon</h2>
+                <img class="pokemon_img" src="./images/pokemon_logo.png" alt="pokemon images" width="250" height="300">
+                <ul class="type_list">
+                    <li class="type_item"></li>
+                </ul>
+                <div class="box">
+                    <p class="height">2.01</p>
+                    <p class="width">100.1</p>
+                </div>
+                <h3 class="candy">Bulbasaur Candy</h3>
+                <p class="egg">Not in Eggs</p>
+                <time class="time">11:30</time>
+                <ul class="weaknesses_list">
+                    <li class="weaknesses_item"></li>
+                </ul>
+            </li>
+        </template>
+    </div>
+
+    <script src="./js/pokemons.js"></script>
+    <script src="./js/utils.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
