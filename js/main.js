@@ -105,24 +105,13 @@ function sortPokemon(pokemonArr, format){
             return 0;
         }
     }); 
-      
-    const sortedDate = pokemonArr.sort((a, b) => {
-        if(a.spawn_time > b.spawn_time){
-            return 1;
-        } else if(a.spawn_time < b.spawn_time){
-            return -1;
-        } else{
-            return 0;
-        }
-    });
+     
+
+    // const sortedDate = pokemonArr.sort((a, b) => Number(new Date(a.spawn_time)) - Number(new Date(b.spawn_time)));
 
     if(format === 'a_z'){
        return sortedAlph;
     } else if(format === 'z_a'){
         return sortedAlph.reverse();
-    } else if(format === 'old_new'){
-        return sortedDate;
-    } else if(format === 'new_old'){
-        return sortedDate.reverse();
     } 
 }
