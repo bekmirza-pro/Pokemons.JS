@@ -1,11 +1,24 @@
 const elPokemonList = makeElament('.pokemon_list');
 const elPokemonTemplate = makeElament('.pokemon_template').content;
 
+// *******************modal***********************
+const elModalInfo = makeElament('.modal');
+const elModalDesciription = makeElament('.modal_desciription');
+const elCloseModalBtn = makeElament('.modal_close-btn')
+const elTypesList = makeElament('.type_list');
+const elWeaknessesList = makeElament('.weaknesses_list');
+const elEgg = makeElament('.egg');
+const elTime = makeElament('.time');
+
+elCloseModalBtn.addEventListener('click', (evt)=>{
+    elModalInfo.classList.remove('modal_active');
+})
+//***************/ Form Elements****************
 const elForm = makeElament('.form');
 const elInputSearch = makeElament('.pokemon_input', elForm);
 const elSelectSort = makeElament('.pokemon_sort', elForm);
-
-// console.log(elInputSearch, elSelectSort);
+const elHeight = makeElament('.height');
+const elWidth = makeElament('.width');
 
 function renderPokemon(pokemonArr, element){
 
@@ -15,41 +28,51 @@ function renderPokemon(pokemonArr, element){
         const pokemonTemplate = elPokemonTemplate.cloneNode(true);
         makeElament('.pokemon_img', pokemonTemplate).setAttribute('src', pokemon.img);
         makeElament('.pokemon_img', pokemonTemplate).setAttribute('alt', pokemon.name);
+
         
         makeElament('.id', pokemonTemplate).textContent = pokemon.id;
         makeElament('.number', pokemonTemplate).textContent = pokemon.num;
         makeElament('.pokemon_heading', pokemonTemplate).textContent = pokemon.name;
-        makeElament('.height', pokemonTemplate).textContent = pokemon.height;
-        makeElament('.width', pokemonTemplate).textContent = pokemon.weight;
         makeElament('.candy', pokemonTemplate).textContent = pokemon.candy;
-        makeElament('.time', pokemonTemplate).textContent = pokemon.spawn_time;
-        makeElament('.egg', pokemonTemplate).textContent = pokemon.egg;
-        
-        const elTypesList = makeElament('.type_list', pokemonTemplate);
-        elTypesList.innerHTML = null;
 
-        pokemon.type.forEach(types => {
-            const newLi = createDOM('li');
-            newLi.textContent = types;
+        const elMoreBtn = makeElament('.pokemon_more-button', pokemonTemplate);
+        elMoreBtn.dataset.pokemon_id = pokemon.id;
 
-            elTypesList.appendChild(newLi);
-        });
+        elMoreBtn.addEventListener('click', (evt) => {
+             elModalInfo.classList.add('modal_active');
+             const pokemonId = evt.target.dataset.pokemon_id;
 
-        const elWeaknessesList = makeElament('.weaknesses_list', pokemonTemplate);
-        elWeaknessesList.innerHTML = null;
-
-        pokemon.weaknesses.forEach(weaknes => {
+             elTypesList.innerHTML = null;
+             elWeaknessesList.innerHTML = null;
+             const foundPokemon = pokemonArr.find((item) => item.id == pokemonId);
+             foundPokemon.type.forEach(types => {
+                const newLi = createDOM('li');
+                newLi.textContent = types;
+    
+                elTypesList.appendChild(newLi);
+            });
+            
+               
+        foundPokemon.weaknesses.forEach(weaknes => {
             const newLi = createDOM('li');
             newLi.textContent = weaknes;
 
             elWeaknessesList.appendChild(newLi);
         });
 
+            elHeight.textContent = foundPokemon.height;
+            elWidth.textContent = foundPokemon.weight;
+            elEgg.textContent = foundPokemon.egg;
+            elTime.textContent = foundPokemon.spawn_time;
+        });
 
-
+        
         element.appendChild(pokemonTemplate);
     });
+ 
 }
+
+
 
 renderPokemon(pokemons, elPokemonList);
 
@@ -65,51 +88,39 @@ elForm.addEventListener('submit', (evt) =>{
 
     const sortedPokemon = sortPokemon(searchedPokemon, selectSort);
 
-
     renderPokemon(sortedPokemon, elPokemonList);
     
 })
 
 function sortPokemon(pokemonArr, format){
+
+    const sortedAlph = pokemonArr.sort((a, b) => {
+        if(a.name > b.name){
+            return 1;
+        } else if(a.name < b.name){
+            return -1;
+        } else{
+            return 0;
+        }
+    }); 
+      
+    const sortedDate = pokemonArr.sort((a, b) => {
+        if(a.spawn_time > b.spawn_time){
+            return 1;
+        } else if(a.spawn_time < b.spawn_time){
+            return -1;
+        } else{
+            return 0;
+        }
+    });
+
     if(format === 'a_z'){
-        return pokemonArr.sort((a, b) => {
-            if(a.name > b.name){
-                return 1;
-            } else if(a.name < b.name){
-                return -1;
-            } else{
-                return 0;
-            }
-        });
+       return sortedAlph;
     } else if(format === 'z_a'){
-        return pokemonArr.sort((a, b) => {
-            if(a.name > b.name){
-                return -1;
-            } else if(a.name < b.name){
-                return 1;
-            } else{
-                return 0;
-            }
-        });
+        return sortedAlph.reverse();
     } else if(format === 'old_new'){
-        return pokemonArr.sort((a, b) => {
-            if(a.spawn_time > b.spawn_time){
-                return 1;
-            } else if(a.spawn_time < b.spawn_time){
-                return -1;
-            } else{
-                return 0;
-            }
-        });
+        return sortedDate;
     } else if(format === 'new_old'){
-        return pokemonArr.sort((a, b) => {
-            if(a.spawn_time > b.spawn_time){
-                return -1;
-            } else if(a.spawn_time < b.spawn_time){
-                return 1;
-            } else{
-                return 0;
-            }
-        });
+        return sortedDate.reverse();
     } 
 }

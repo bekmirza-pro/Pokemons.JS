@@ -5,7 +5,7 @@ body {
 .images {
   width: 100%;
   max-width: 700px;
-  padding: 30px;
+  padding:40px 0;
   /* margin-top: 30px; */
   display: block;
   margin: 0 auto;
@@ -32,7 +32,7 @@ body {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 25px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:monospace;
   box-shadow: 0 0 7px 5px #248ab9;
   border: none;
   border-radius: 5px;
@@ -45,7 +45,7 @@ body {
   display: block;
   margin-bottom: 25px;
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:monospace;
   box-shadow: 0 0 7px 5px #248ab9;
   border: none;
   border-radius: 5px;
@@ -56,12 +56,17 @@ body {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 30px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:monospace;
   box-shadow: 0 0 7px 5px #e6e6e6;
   border: none;
   border-radius: 5px;
   background-color: #248ab9;
   color: #fff;
+}
+
+.button:hover{
+  background-color: #ffd845;
+  box-shadow: 0 0 7px 8px #248ab9;
 }
 
 .pokemon_list{
@@ -75,7 +80,7 @@ body {
   justify-content: space-between;
   /* align-items: center; */
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:monospace;
   flex-wrap: wrap;
   text-align: center;
   color:#458fff;
@@ -91,29 +96,51 @@ body {
   box-shadow: 0 0 10px 8px #248ab9;
 }
 .type_list{
+  width: 100%;
+  max-width: 220px;
   margin: 0;
   padding: 0;
   list-style: none;
   display: flex;
-  justify-content: center;
+  font-size: 25px;
+  padding: 10px 0;
+  font-family:monospace;
+  /* justify-content: center; */
   justify-content: space-evenly;
+  margin: 0 auto;
 }
-.box{
-  display: flex;
-  justify-content: center;
-  justify-content: space-evenly;
-}
+
 .candy{
   margin-bottom: 0;
   margin-top: 0;
 }
 .weaknesses_list{
+  width: 100%;
+  max-width: 320px;
   margin: 0;
   padding: 0;
-  margin-top: 10px;
   list-style: none;
   display: flex;
+  font-size: 25px;
+  font-family:monospace;
   justify-content: space-evenly;
+  margin: 0 auto;
+}
+.box{
+  width: 100%;
+  max-width: 220px;
+  display: flex;
+  justify-content: space-evenly;
+  font-family:monospace;
+  margin: 0 auto;
+}
+.height{
+  font-size: 25px;
+  font-weight: 700;
+}
+.width{
+  font-size: 25px;
+  font-weight: 700;
 }
 .pokemon_heading{
   margin-bottom: 0;
@@ -121,16 +148,96 @@ body {
 .time{
   font-size: 20px;
   font-weight: 700;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  font-family: monospace;
+}
+.egg{
+  font-size: 20px;
+  font-weight: 700;
+  font-family:monospace;
+  margin: 0 auto;
+  margin-bottom: 15px;
 }
 .id{
   font-size: 30px;
   margin: 0;
   font-weight: 800;
 }
+.modal_inner{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  color: #0897da;
+}
+.modal{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background-color:rgba(0, 0, 0, 0.6) ;
+}
 
+.modal_active{
+  display: flex;
+}
+.modal_inner{
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 8px #248ab9;
+}
+.pokemon_more-button{
+  padding: 8px 30px;
+  font-size: 16px;
+  background-color: #248ab9;
+  border: none;
+  border-radius: 5px;
+  margin-top: 20px;
+  color: #fff;
+}
+.pokemon_more-button:hover{
+  background-color: #ffd845;
+  box-shadow: 0 0 7px 8px #248ab9;
+}
+
+.modal_close-btn{
+  width: 100%;
+  max-width: 80px;
+  font-size: 25px;
+  display:inline-block;
+  margin: 0 auto;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  background-color: #248ab9;
+}
+.modal_close-btn:hover{
+  background-color: #ffd845;
+  box-shadow: 0 0 7px 8px #248ab9;
+}
+.modal_desciription{
+  font-size: 30px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  font-family: monospace;
+  margin: 0 auto;
+  color: #ffd845;
+}
 @media only screen and (max-width: 657px) {
   .form{
     display: flex;
     flex-direction: column;
   }
 }
+

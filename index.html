@@ -23,25 +23,37 @@
             <button class="button" type="submit">Button</button>
         </form>
         <ul class="pokemon_list"></ul>
+
+        <!------------------------ MODALS------------------------ ---->
+
+        <div class="modal">
+            <div class="modal_inner">
+                <p class="modal_desciription">Information</p>
+                <ul class="type_list">
+                    <li class="type_item"></li>
+                </ul>
+                <ul class="weaknesses_list">
+                    <li class="weaknesses_item"></li>
+                </ul>
+                <div class="box">
+                    <p class="height">2.01</p>
+                    <p class="width">100.1</p>
+                </div>
+                <p class="egg">Not in Eggs</p>
+                <time class="time">11:30</time>
+                <button class="modal_close-btn" type="button">&times</button>
+            </div>
+        </div>
+
+        <!---------------------- Templates --------------------->
         <template class="pokemon_template">
             <li class="pokemon_item">
                 <p class="id">1</p>
                 <p class="number">001</p>
                 <h2 class="pokemon_heading">pokemon</h2>
                 <img class="pokemon_img" src="./images/pokemon_logo.png" alt="pokemon images" width="250" height="300">
-                <ul class="type_list">
-                    <li class="type_item"></li>
-                </ul>
-                <div class="box">
-                    <p class="height">2.01</p>
-                    <p class="width">100.1</p>
-                </div>
                 <h3 class="candy">Bulbasaur Candy</h3>
-                <p class="egg">Not in Eggs</p>
-                <time class="time">11:30</time>
-                <ul class="weaknesses_list">
-                    <li class="weaknesses_item"></li>
-                </ul>
+                <button class="pokemon_more-button" type="button">Information</button>
             </li>
         </template>
     </div>
