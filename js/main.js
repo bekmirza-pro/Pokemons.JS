@@ -13,7 +13,9 @@ const elTime = makeElament('.time');
 elCloseModalBtn.addEventListener('click', (evt)=>{
     elModalInfo.classList.remove('modal_active');
 })
-//***************/ Form Elements****************
+
+//***************/ Form Elements*******************
+
 const elForm = makeElament('.form');
 const elInputSearch = makeElament('.pokemon_input', elForm);
 const elSelectSort = makeElament('.pokemon_sort', elForm);
